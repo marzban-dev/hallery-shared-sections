@@ -1,6 +1,6 @@
 import { m as motion } from "framer-motion";
 import { ISpinnerProps } from "./spinner.types";
-import SpinnerThird from "components/icons/spinner-third";
+import SpinnerThird from "shared/components/icons/spinner-third";
 
 const Spinner: React.FC<ISpinnerProps> = ({ size = 30, style, iconClassName }) => {
     return (
