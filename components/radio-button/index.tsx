@@ -2,7 +2,7 @@
 
 import { Input } from "@mui/base";
 import { IRadioButtonProps } from "./radio-button.types";
-import IconCheck from "components/shared/icons/check";
+import IconCheck from "shared/components/icons/check";
 import classNames from "classnames";
 
 const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, onChange }) => {

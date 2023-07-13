@@ -1,4 +1,4 @@
-import { IItem } from "components/shared/action-menu/components/item/item.types";
+import { IItem } from "shared/components/action-menu/components/item/item.types";
 
 export interface IActionMenuButtonProps {
     className?: string;

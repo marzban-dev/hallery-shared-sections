@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { IButtonProps } from "./button.types";
 import { Button as MuiButton } from "@mui/base";
-import Spinner from "components/shared/spinner";
+import Spinner from "shared/components/spinner";
 
 const Button: React.FC<IButtonProps> = ({
     gradient,

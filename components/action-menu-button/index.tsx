@@ -2,8 +2,8 @@
 
 import { Button, ClickAwayListener } from "@mui/base";
 import { IActionMenuButtonProps } from "./action-menu-button.types";
-import EllipsisVertical from "components/shared/icons/ellipsis-vertical";
-import ActionMenu from "components/shared/action-menu";
+import EllipsisVertical from "shared/components/icons/ellipsis-vertical";
+import ActionMenu from "shared/components/action-menu";
 import { useRef, useState } from "react";
 import classNames from "classnames";
 

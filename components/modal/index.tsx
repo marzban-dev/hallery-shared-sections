@@ -1,7 +1,7 @@
 "use client";
 
 import classNames from "classnames";
-import { Portal } from "components/portal";
+import { Portal } from "shared/components/portal";
 import { AnimatePresence, m as motion, PanInfo, Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
