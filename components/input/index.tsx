@@ -3,6 +3,8 @@ import { forwardRef } from "react";
 import { IInputProps } from "./input.types";
 import MuiInput from "@mui/base/Input";
 
+"kir ghashang amat"
+
 const Input = forwardRef<any, IInputProps>(function Input(
     {
         error,
