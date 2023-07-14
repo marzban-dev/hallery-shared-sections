@@ -1,7 +1,7 @@
 "use client";
 
 import classNames from "classnames";
-import Placeholder from "components/placeholder";
+import Placeholder from "shared/components/placeholder";
 import { AnimatePresence, m as motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
