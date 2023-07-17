@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { IProgressLoadingProps } from "./progress-loading.types";
 import { m as motion, useMotionTemplate, useSpring } from "framer-motion";
-import randint from "utils/randint";
+import randint from "shared/utils/randint";
 
 const ProgressLoading: React.FC<IProgressLoadingProps> = ({ isLoading }) => {
     const percentMotionValue = useSpring(0, { damping: 30, stiffness: 300 });
