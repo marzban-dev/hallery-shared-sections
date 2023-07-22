@@ -19,7 +19,7 @@ const Button: React.FC<IButtonProps> = ({
 }) => {
     const containerClasses = classNames(
         {
-            "group flex justify-center items-center gap-2 transition-colors transition-[filter] [line-height:0]": 1,
+            "group flex justify-center items-center gap-2 transition-colors transition-[filter] [line-height:0] outline-1 outline-transparent": 1,
 
             "rounded-[12px]": !rounded,
             "rounded-[35px]": rounded,
@@ -32,7 +32,7 @@ const Button: React.FC<IButtonProps> = ({
             "rounded-full min-w-[28px] min-h-[28px] text-[14px]": !rounded && circle && size === "xs",
 
             "text-white": variant === "filled",
-            "bg-gradient-to-tr from-blue-600 to-blue-300": variant === "filled" && gradient,
+            "bg-gradient-to-r from-blue-600 to-blue-300": variant === "filled" && gradient,
             "bg-blue-500 hover:bg-blue-400": variant === "filled" && !gradient,
             "bg-transparent border-2 border-blue-500 text-blue-500 hover:border-blue-400 hover:text-white hover:bg-blue-400":
                 variant === "outlined",
