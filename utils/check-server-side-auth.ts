@@ -1,20 +1,11 @@
-import { getSession } from "next-auth/react";
-import { GetServerSidePropsContext, PreviewData } from "next";
-import { ParsedUrlQuery } from "querystring";
+import { authOptions } from "config/auth";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-export const checkServerSideAuth = async (
-    context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>
-) => {
-    const session = await getSession({ req: context.req });
+export const checkServerSideAuth = async () => {
+    const session = await getServerSession(authOptions);
 
     if (!session) {
-        return {
-            redirect: {
-                destination: "/auth/signin",
-                permanent: false,
-            },
-        };
+        redirect("/auth/signin");
     }
-
-    return session;
 };
