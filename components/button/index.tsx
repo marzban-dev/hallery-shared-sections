@@ -14,6 +14,7 @@ const Button: React.FC<IButtonProps> = ({
     icon: Icon,
     loading,
     iconClassName,
+    disabled,
     ...rest
 }) => {
     const containerClasses = classNames(
@@ -39,8 +40,8 @@ const Button: React.FC<IButtonProps> = ({
             "shadow-none": !shadow,
             "shadow-md shadow-[rgba(0,0,0,0.4)]": shadow,
 
-            "grayscale-0": !rest.disabled,
-            "grayscale-[1]": rest.disabled,
+            "grayscale-0": !disabled,
+            "grayscale-[1]": disabled,
 
             "w-full": !circle && fullWidth,
         },
@@ -59,7 +60,7 @@ const Button: React.FC<IButtonProps> = ({
     );
 
     return (
-        <MuiButton slotProps={{ root: { className: containerClasses } }} {...rest}>
+        <MuiButton slotProps={{ root: { className: containerClasses } }} disabled={disabled || loading} {...rest}>
             {loading ? (
                 <Spinner size={25} iconClassName={iconClasses} />
             ) : (
