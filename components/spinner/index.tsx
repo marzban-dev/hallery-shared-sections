@@ -1,3 +1,5 @@
+"use client";
+
 import { m as motion } from "framer-motion";
 import { ISpinnerProps } from "./spinner.types";
 import SpinnerThird from "shared/components/icons/spinner-third";
