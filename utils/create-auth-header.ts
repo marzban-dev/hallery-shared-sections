@@ -1,7 +1,8 @@
-import { getSession } from "next-auth/react";
+import { authOptions } from "config/auth";
+import { getServerSession } from "next-auth";
 
-const createAuthHeader = async (req?: any) => {
-    const session = await getSession();
+const createAuthHeader = async () => {
+    const session = await getServerSession(authOptions);
 
     if (session) {
         return {
