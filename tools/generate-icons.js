@@ -11,7 +11,7 @@ const fs = require("fs/promises");
             .join("");
 
         await fs.writeFile(
-            `./components/icons/${fileName}.tsx`,
+            `./shared/components/icons/${fileName}.tsx`,
             `"use client";\n\nimport Comp${PascalCase} from "public/assets/icon/${fileName}.svg"\n\nconst Icon${PascalCase} = (props : {className?:string; style?:React.CSSProperties}) => {\n    return <Comp${PascalCase} {...props}/>\n}\n\nexport default Icon${PascalCase}`
         );
     }

@@ -1,7 +1,10 @@
+"use client";
+
 import classNames from "classnames";
 import { forwardRef } from "react";
 import { IInputProps } from "./input.types";
 import MuiInput from "@mui/base/Input";
+import IconCircleExclamation from "shared/components/icons/circle-exclamation";
 
 const Input = forwardRef<any, IInputProps>(function Input(
     {
@@ -41,7 +44,7 @@ const Input = forwardRef<any, IInputProps>(function Input(
     });
 
     return (
-        <div className="flex flex-col items-start justify-start w-full">
+        <div className="flex w-full flex-col items-start justify-start">
             {topTitle && <div className="py-2 pl-3 text-[18px] text-white">{topTitle}</div>}
             <MuiInput
                 slotProps={{
@@ -67,6 +70,11 @@ const Input = forwardRef<any, IInputProps>(function Input(
                 {...rest}
                 ref={ref}
             />
+            {error && errorMessage && (
+                <div className="mt-2 flex items-center justify-start gap-2 px-3 text-[16px] font-medium text-white sm:px-4">
+                    <IconCircleExclamation className="h-[16px] fill-red-600 mt-[2px]"/><span>{errorMessage}</span>
+                </div>
+            )}
         </div>
     );
 });

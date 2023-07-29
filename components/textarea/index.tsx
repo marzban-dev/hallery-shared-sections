@@ -39,6 +39,11 @@ const Textarea: React.FC<ITextareaProps> = ({
                 )}
                 <textarea className={textareaClasses} {...rest} />
             </div>
+            {error && errorMessage && (
+                <div className="mt-2 flex items-center justify-start gap-2 px-3 text-[16px] font-medium text-red-400 sm:px-4">
+                    <span>{errorMessage}</span>
+                </div>
+            )}
         </div>
     );
 };

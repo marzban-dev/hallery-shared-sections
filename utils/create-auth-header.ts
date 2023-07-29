@@ -1,8 +1,15 @@
 import { authOptions } from "config/auth";
-import { getServerSession } from "next-auth";
+import { getServerSession} from "next-auth/next";
+import { getSession } from "next-auth/react";
 
 const createAuthHeader = async () => {
-    const session = await getServerSession(authOptions);
+    let session = null;
+
+    if (typeof window === "undefined") {
+        session = await getServerSession(authOptions);
+    } else {
+        session = await getSession();
+    }
 
     if (session) {
         return {
