@@ -4,19 +4,42 @@ import { Button as MuiButton } from "@mui/base";
 import Spinner from "shared/components/spinner";
 
 const Button: React.FC<IButtonProps> = ({
+    variant = "filled",
+    size = "md",
+    color = "default",
     gradient,
     fullWidth,
-    variant = "filled",
     circle,
     rounded,
     shadow,
-    size = "md",
     icon: Icon,
     loading,
     iconClassName,
     disabled,
     ...rest
 }) => {
+    const colorClasses = {
+        gradient: classNames({
+            "bg-gradient-to-r": 1,
+            "from-blue-600 to-blue-300": color === "default",
+            "from-red-600 to-red-300": color === "danger",
+        }),
+        filled: classNames({
+            "bg-blue-500 hover:bg-blue-400": color === "default",
+            "bg-red-500 hover:bg-red-400": color === "danger",
+        }),
+        outlined: classNames({
+            "bg-transparent border-2 hover:text-white": 1,
+            "border-blue-500 text-blue-500 hover:border-blue-400 hover:bg-blue-400": color === "default",
+            "border-red-500 text-red-500 hover:border-red-400 hover:bg-red-400": color === "danger",
+        }),
+        iconOutlined: classNames({
+            "group-hover:fill-white transition-colors": 1,
+            "fill-blue-500": color === "default",
+            "fill-red-500": color === "default",
+        }),
+    };
+
     const containerClasses = classNames(
         {
             "group flex justify-center items-center gap-2 transition-colors transition-[filter] [line-height:0] outline-1 outline-transparent": 1,
@@ -32,10 +55,9 @@ const Button: React.FC<IButtonProps> = ({
             "rounded-full min-w-[28px] min-h-[28px] text-[14px]": !rounded && circle && size === "xs",
 
             "text-white": variant === "filled",
-            "bg-gradient-to-r from-blue-600 to-blue-300": variant === "filled" && gradient,
-            "bg-blue-500 hover:bg-blue-400": variant === "filled" && !gradient,
-            "bg-transparent border-2 border-blue-500 text-blue-500 hover:border-blue-400 hover:text-white hover:bg-blue-400":
-                variant === "outlined",
+            [colorClasses.gradient]: variant === "filled" && gradient,
+            [colorClasses.filled]: variant === "filled" && !gradient,
+            [colorClasses.outlined]: variant === "outlined",
 
             "shadow-none": !shadow,
             "shadow-md shadow-[rgba(0,0,0,0.4)]": shadow,
@@ -54,7 +76,7 @@ const Button: React.FC<IButtonProps> = ({
             "h-[16px]": size === "sm",
             "h-[12px]": size === "xs",
             "fill-white": variant === "filled",
-            "fill-blue-500 group-hover:fill-white transition-colors": variant === "outlined",
+            [colorClasses.iconOutlined]: variant === "outlined",
         },
         iconClassName
     );

@@ -6,6 +6,7 @@ export interface IButtonProps extends ComponentProps<typeof Button> {
     fullWidth?: boolean;
     variant?: "outlined" | "filled";
     size?: "sm" | "md" | "xs";
+    color?: "default" | "danger";
     circle?: boolean;
     rounded?: boolean;
     shadow?: boolean;
