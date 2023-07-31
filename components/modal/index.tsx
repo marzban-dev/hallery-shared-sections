@@ -3,13 +3,23 @@
 import classNames from "classnames";
 import { Portal } from "shared/components/portal";
 import { AnimatePresence, m as motion, PanInfo, Variants } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { IModalProps } from "./modal.types";
 
 const Modal: React.FC<IModalProps> = ({ title, show, onClose, children }) => {
     const [fullSize, setFullSize] = useState(false);
     const isMobile = useMediaQuery({ maxWidth: 520 });
+    const [contentHeight, setContentHeight] = useState(500);
+    const childContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const height = childContainerRef.current?.clientHeight;
+        if (height) {
+            if (height + 120 > 550) setContentHeight(550);
+            else setContentHeight(height + 120);
+        }
+    }, [children]);
 
     useEffect(() => {
         if (!isMobile) setFullSize(false);
@@ -45,7 +55,7 @@ const Modal: React.FC<IModalProps> = ({ title, show, onClose, children }) => {
 
     const contentDesktopVariants: Variants = {
         hide: {
-            height: 600,
+            height: contentHeight,
             opacity: 0,
             y: 50,
             transition: {
@@ -56,7 +66,7 @@ const Modal: React.FC<IModalProps> = ({ title, show, onClose, children }) => {
             },
         },
         show: {
-            height: 600,
+            height: contentHeight,
             opacity: 1,
             y: 0,
             transition: {
@@ -68,13 +78,13 @@ const Modal: React.FC<IModalProps> = ({ title, show, onClose, children }) => {
     const contentMobileVariants: Variants = {
         hide: {
             y: "100%",
-            height: 500,
+            height: contentHeight,
             transition: {
                 duration: 0.2,
             },
         },
         show: {
-            height: fullSize ? "100%" : 500,
+            height: fullSize ? "100%" : contentHeight,
             y: 0,
             transition: {
                 y: { type: "spring", stiffness: 350, damping: 40 },
@@ -116,14 +126,16 @@ const Modal: React.FC<IModalProps> = ({ title, show, onClose, children }) => {
                                 <div className="relative">
                                     <div className="absolute left-0 top-0 z-[1200] h-[20px] w-full bg-gradient-to-b from-[rgb(20,20,20)] to-transparent" />
                                     <motion.div
-                                        animate={{ height: fullSize ? "100vh" : 600 }}
+                                        animate={{ height: fullSize ? "100vh" : contentHeight }}
                                         className="scrollbar-custom relative z-[1180] overflow-y-scroll px-6 pb-5 pt-2 min-[520px]:py-5"
                                         id="modal-scroll-container"
                                     >
                                         <div className="mb-6 flex items-center justify-center border-b-2 border-[rgb(40,40,40)] pb-2">
                                             <span className="text-[25px] font-medium text-white">{title}</span>
                                         </div>
-                                        {children}
+                                        <div className="w-full" ref={childContainerRef}>
+                                            {children}
+                                        </div>
                                     </motion.div>
                                     <div className="absolute bottom-0 left-0 z-[1200] h-[20px] w-full bg-gradient-to-t from-[rgb(20,20,20)] to-transparent" />
 
