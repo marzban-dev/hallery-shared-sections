@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 
 (async () => {
-    const files = await fs.readdir(`./public/assets/icon`);
+    const files = await fs.readdir(`./shared/components/icons/svgs`);
 
     for (const file of files) {
         const fileName = file.split(".")[0];
