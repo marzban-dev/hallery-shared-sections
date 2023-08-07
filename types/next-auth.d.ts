@@ -1,4 +1,4 @@
-import { ISigninResponse } from "shared/apis/auth.types";
+import { ISigninResponse } from "apis/auth.types";
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {

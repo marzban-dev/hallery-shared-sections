@@ -12,7 +12,8 @@ declare global {
         link: string;
         location: string;
         following: boolean;
-        repost_count: number;
+        artist: number;
+        verify: boolean;
         followings_count: number;
         followers_count: number;
         artist_followings_count: number;
