@@ -1,6 +1,6 @@
 "use client";
 
-import CompCheck from "public/assets/icon/check.svg"
+import CompCheck from "shared/components/icons/svgs/check.svg"
 
 const IconCheck = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompCheck {...props}/>

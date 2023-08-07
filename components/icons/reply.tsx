@@ -1,6 +1,6 @@
 "use client";
 
-import CompReply from "public/assets/icon/reply.svg"
+import CompReply from "shared/components/icons/svgs/reply.svg"
 
 const IconReply = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompReply {...props}/>

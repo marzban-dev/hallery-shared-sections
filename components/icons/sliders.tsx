@@ -1,6 +1,6 @@
 "use client";
 
-import CompSliders from "public/assets/icon/sliders.svg"
+import CompSliders from "shared/components/icons/svgs/sliders.svg"
 
 const IconSliders = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompSliders {...props}/>

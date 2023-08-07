@@ -1,6 +1,6 @@
 "use client";
 
-import CompPinterest from "public/assets/icon/pinterest.svg"
+import CompPinterest from "shared/components/icons/svgs/pinterest.svg"
 
 const IconPinterest = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompPinterest {...props}/>

@@ -1,6 +1,6 @@
 "use client";
 
-import CompCirclePlus from "public/assets/icon/circle-plus.svg"
+import CompCirclePlus from "shared/components/icons/svgs/circle-plus.svg"
 
 const IconCirclePlus = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompCirclePlus {...props}/>

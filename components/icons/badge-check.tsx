@@ -1,6 +1,6 @@
 "use client";
 
-import CompBadgeCheck from "public/assets/icon/badge-check.svg"
+import CompBadgeCheck from "shared/components/icons/svgs/badge-check.svg"
 
 const IconBadgeCheck = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompBadgeCheck {...props}/>

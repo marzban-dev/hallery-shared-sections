@@ -1,6 +1,6 @@
 "use client";
 
-import CompDroplet from "public/assets/icon/droplet.svg"
+import CompDroplet from "shared/components/icons/svgs/droplet.svg"
 
 const IconDroplet = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompDroplet {...props}/>

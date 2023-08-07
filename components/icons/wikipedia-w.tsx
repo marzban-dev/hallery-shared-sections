@@ -1,6 +1,6 @@
 "use client";
 
-import CompWikipediaW from "public/assets/icon/wikipedia-w.svg"
+import CompWikipediaW from "shared/components/icons/svgs/wikipedia-w.svg"
 
 const IconWikipediaW = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompWikipediaW {...props}/>

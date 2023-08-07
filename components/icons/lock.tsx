@@ -1,6 +1,6 @@
 "use client";
 
-import CompLock from "public/assets/icon/lock.svg"
+import CompLock from "shared/components/icons/svgs/lock.svg"
 
 const IconLock = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompLock {...props}/>

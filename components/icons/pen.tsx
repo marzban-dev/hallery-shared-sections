@@ -1,6 +1,6 @@
 "use client";
 
-import CompPen from "public/assets/icon/pen.svg"
+import CompPen from "shared/components/icons/svgs/pen.svg"
 
 const IconPen = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompPen {...props}/>

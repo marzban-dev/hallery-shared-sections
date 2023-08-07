@@ -1,6 +1,6 @@
 "use client";
 
-import CompFileMagnifyingGlass from "public/assets/icon/file-magnifying-glass.svg"
+import CompFileMagnifyingGlass from "shared/components/icons/svgs/file-magnifying-glass.svg"
 
 const IconFileMagnifyingGlass = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompFileMagnifyingGlass {...props}/>

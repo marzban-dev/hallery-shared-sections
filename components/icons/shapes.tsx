@@ -1,6 +1,6 @@
 "use client";
 
-import CompShapes from "public/assets/icon/shapes.svg"
+import CompShapes from "shared/components/icons/svgs/shapes.svg"
 
 const IconShapes = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompShapes {...props}/>

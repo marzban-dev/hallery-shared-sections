@@ -1,6 +1,6 @@
 "use client";
 
-import CompEnvelope from "public/assets/icon/envelope.svg"
+import CompEnvelope from "shared/components/icons/svgs/envelope.svg"
 
 const IconEnvelope = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompEnvelope {...props}/>

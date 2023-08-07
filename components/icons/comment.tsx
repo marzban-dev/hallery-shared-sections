@@ -1,6 +1,6 @@
 "use client";
 
-import CompComment from "public/assets/icon/comment.svg"
+import CompComment from "shared/components/icons/svgs/comment.svg"
 
 const IconComment = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompComment {...props}/>

@@ -1,6 +1,6 @@
 "use client";
 
-import CompInstagram from "public/assets/icon/instagram.svg"
+import CompInstagram from "shared/components/icons/svgs/instagram.svg"
 
 const IconInstagram = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompInstagram {...props}/>

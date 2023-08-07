@@ -1,6 +1,6 @@
 "use client";
 
-import CompFlag from "public/assets/icon/flag.svg"
+import CompFlag from "shared/components/icons/svgs/flag.svg"
 
 const IconFlag = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompFlag {...props}/>

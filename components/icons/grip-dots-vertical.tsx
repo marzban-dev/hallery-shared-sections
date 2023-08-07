@@ -1,6 +1,6 @@
 "use client";
 
-import CompGripDotsVertical from "public/assets/icon/grip-dots-vertical.svg"
+import CompGripDotsVertical from "shared/components/icons/svgs/grip-dots-vertical.svg"
 
 const IconGripDotsVertical = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompGripDotsVertical {...props}/>

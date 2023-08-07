@@ -1,6 +1,6 @@
 "use client";
 
-import CompTrashCan from "public/assets/icon/trash-can.svg"
+import CompTrashCan from "shared/components/icons/svgs/trash-can.svg"
 
 const IconTrashCan = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompTrashCan {...props}/>

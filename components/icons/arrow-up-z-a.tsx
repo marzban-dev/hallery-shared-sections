@@ -1,6 +1,6 @@
 "use client";
 
-import CompArrowUpZA from "public/assets/icon/arrow-up-z-a.svg"
+import CompArrowUpZA from "shared/components/icons/svgs/arrow-up-z-a.svg"
 
 const IconArrowUpZA = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompArrowUpZA {...props}/>

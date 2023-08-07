@@ -1,6 +1,6 @@
 "use client";
 
-import CompPaintbrush from "public/assets/icon/paintbrush.svg"
+import CompPaintbrush from "shared/components/icons/svgs/paintbrush.svg"
 
 const IconPaintbrush = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompPaintbrush {...props}/>

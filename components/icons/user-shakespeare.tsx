@@ -1,6 +1,6 @@
 "use client";
 
-import CompUserShakespeare from "public/assets/icon/user-shakespeare.svg"
+import CompUserShakespeare from "shared/components/icons/svgs/user-shakespeare.svg"
 
 const IconUserShakespeare = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompUserShakespeare {...props}/>

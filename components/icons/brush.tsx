@@ -1,6 +1,6 @@
 "use client";
 
-import CompBrush from "public/assets/icon/brush.svg"
+import CompBrush from "shared/components/icons/svgs/brush.svg"
 
 const IconBrush = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompBrush {...props}/>

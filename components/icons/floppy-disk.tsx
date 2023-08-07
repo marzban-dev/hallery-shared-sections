@@ -1,6 +1,6 @@
 "use client";
 
-import CompFloppyDisk from "public/assets/icon/floppy-disk.svg"
+import CompFloppyDisk from "shared/components/icons/svgs/floppy-disk.svg"
 
 const IconFloppyDisk = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompFloppyDisk {...props}/>

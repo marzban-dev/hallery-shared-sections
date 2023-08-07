@@ -1,6 +1,6 @@
 "use client";
 
-import CompBell from "public/assets/icon/bell.svg"
+import CompBell from "shared/components/icons/svgs/bell.svg"
 
 const IconBell = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompBell {...props}/>

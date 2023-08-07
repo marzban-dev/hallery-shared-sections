@@ -1,6 +1,6 @@
 "use client";
 
-import CompListUl from "public/assets/icon/list-ul.svg"
+import CompListUl from "shared/components/icons/svgs/list-ul.svg"
 
 const IconListUl = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompListUl {...props}/>

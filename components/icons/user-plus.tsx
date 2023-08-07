@@ -1,6 +1,6 @@
 "use client";
 
-import CompUserPlus from "public/assets/icon/user-plus.svg"
+import CompUserPlus from "shared/components/icons/svgs/user-plus.svg"
 
 const IconUserPlus = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompUserPlus {...props}/>

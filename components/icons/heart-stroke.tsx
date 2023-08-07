@@ -1,6 +1,6 @@
 "use client";
 
-import CompHeartStroke from "public/assets/icon/heart-stroke.svg"
+import CompHeartStroke from "shared/components/icons/svgs/heart-stroke.svg"
 
 const IconHeartStroke = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompHeartStroke {...props}/>

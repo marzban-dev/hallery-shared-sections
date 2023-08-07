@@ -1,6 +1,6 @@
 "use client";
 
-import CompCircleExclamation from "public/assets/icon/circle-exclamation.svg"
+import CompCircleExclamation from "shared/components/icons/svgs/circle-exclamation.svg"
 
 const IconCircleExclamation = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompCircleExclamation {...props}/>

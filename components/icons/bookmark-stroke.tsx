@@ -1,6 +1,6 @@
 "use client";
 
-import CompBookmarkStroke from "public/assets/icon/bookmark-stroke.svg"
+import CompBookmarkStroke from "shared/components/icons/svgs/bookmark-stroke.svg"
 
 const IconBookmarkStroke = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompBookmarkStroke {...props}/>

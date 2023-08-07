@@ -1,6 +1,6 @@
 "use client";
 
-import CompFilter from "public/assets/icon/filter.svg"
+import CompFilter from "shared/components/icons/svgs/filter.svg"
 
 const IconFilter = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompFilter {...props}/>

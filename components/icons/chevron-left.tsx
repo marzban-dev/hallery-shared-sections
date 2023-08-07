@@ -1,6 +1,6 @@
 "use client";
 
-import CompChevronLeft from "public/assets/icon/chevron-left.svg"
+import CompChevronLeft from "shared/components/icons/svgs/chevron-left.svg"
 
 const IconChevronLeft = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompChevronLeft {...props}/>

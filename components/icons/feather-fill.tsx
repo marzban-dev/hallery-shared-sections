@@ -1,6 +1,6 @@
 "use client";
 
-import CompFeatherFill from "public/assets/icon/feather-fill.svg"
+import CompFeatherFill from "shared/components/icons/svgs/feather-fill.svg"
 
 const IconFeatherFill = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompFeatherFill {...props}/>

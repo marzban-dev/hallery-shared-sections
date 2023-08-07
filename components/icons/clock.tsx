@@ -1,6 +1,6 @@
 "use client";
 
-import CompClock from "public/assets/icon/clock.svg"
+import CompClock from "shared/components/icons/svgs/clock.svg"
 
 const IconClock = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompClock {...props}/>

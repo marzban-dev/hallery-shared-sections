@@ -1,6 +1,6 @@
 "use client";
 
-import CompEyeSolid from "public/assets/icon/eye-solid.svg"
+import CompEyeSolid from "shared/components/icons/svgs/eye-solid.svg"
 
 const IconEyeSolid = (props : {className?:string; style?:React.CSSProperties}) => {
     return <CompEyeSolid {...props}/>
