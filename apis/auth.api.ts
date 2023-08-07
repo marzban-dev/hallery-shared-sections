@@ -8,14 +8,21 @@ import {
     IResetPasswordRequestParams,
     IConfirmResetPasswordRequestParams,
 } from "./auth.types";
+import customFetch from "shared/config/fetch";
 
 export const signin = async (params: ISigninRequestParams) => {
-    const response = await axios.post<ISigninResponse>("/auth/jwt/create/", {
-        username: params.username,
-        password: params.password,
+    const response = await customFetch<ISigninResponse>("/auth/jwt/create/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            username: params.username,
+            password: params.password,
+        }),
     });
 
-    return response.data;
+    return response;
 };
 
 export const signup = async (params: ISignupRequestParams) => {
@@ -28,22 +35,20 @@ export const signup = async (params: ISignupRequestParams) => {
     return response.data;
 };
 
-export const getUser = async () => {
-    const response = await axios.get<IGetUserResponse>("/user/my/myinfo/");
-    return response.data;
+export const getUser = async (username: string) => {
+    const response = await customFetch<IUser>(`/user/get/${username}/`, { cache: "no-cache" });
+    return response;
 };
 
 export const refreshAccessToken = async (token: any) => {
     try {
-        const response = await axios.post("/auth/jwt/refresh/", {
-            refresh: token.refreshToken,
+        const refreshedTokens = await customFetch<{ access: string; refresh: string }>("/auth/jwt/refresh/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ refresh: token.refreshToken }),
         });
-
-        const refreshedTokens = response.data;
-
-        if (response.status !== 200) {
-            throw refreshedTokens;
-        }
 
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);

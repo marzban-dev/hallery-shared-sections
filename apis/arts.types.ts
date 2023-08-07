@@ -2,21 +2,6 @@
  * Apis request, response types
  */
 
-type TOrdering =
-    | "artist"
-    | "title"
-    | "date"
-    | "technique"
-    | "form"
-    | "school"
-    | "type"
-    | "location"
-    | "reference"
-    | "likes_count"
-    | "most_viewed"
-    | "most_liked"
-    | "most_reposted";
-
 export interface IGetArtsRequestParams extends IApiRequest {
     pageParam: {
         artist?: number;
@@ -28,8 +13,11 @@ export interface IGetArtsRequestParams extends IApiRequest {
         school__icontains?: string;
         type__icontains?: string;
         location__icontains?: string;
-        fields?: string;
-        ordering?: TOrdering | `-${TOrdering}`;
+        dimension__icontains?: string;
+        created_at__gte?: string;
+        created_at__lte?: string;
+        created_at?: string;
+        ordering?: string;
         limit?: number;
         offset?: number;
     };
@@ -38,6 +26,19 @@ export interface IGetArtsRequestParams extends IApiRequest {
 export interface IGetArtsResponse extends IApiInfiniteResponse<IArt> {}
 
 export interface IGetArtRequestParams extends IApiRequest {
+    id: number;
+}
+
+export interface ICreateArtRequestParams extends IApiRequest {
+    data: ICreateArt;
+}
+
+export interface IUpdateArtRequestParams extends IApiRequest {
+    id: number;
+    data: Omit<ICreateArt, "image">;
+}
+
+export interface IDeleteArtRequestParams extends IApiRequest {
     id: number;
 }
 

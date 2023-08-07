@@ -1,6 +1,8 @@
 import axios from "shared/config/axios";
 import customFetch from "shared/config/fetch";
 import {
+    ICreateArtRequestParams,
+    IDeleteArtRequestParams,
     IGetArtLikesRequestParams,
     IGetArtLikesResponse,
     IGetArtRequestParams,
@@ -13,20 +15,53 @@ import {
     ISaveArtRequestParams,
     IUnlikeArtRequestParams,
     IUnsaveArtRequestParams,
+    IUpdateArtRequestParams,
 } from "./arts.types";
 
 export const getArt = async (params: IGetArtRequestParams) => {
     const response = await customFetch<IGetArtResponse>(`/art/${params.id}/`, {
         signal: params.signal,
-        cache: "force-cache",
     });
 
     return response;
 };
 
+export const createArt = async (params: ICreateArtRequestParams) => {
+    const formData = new FormData();
+
+    Object.keys(params.data).forEach((param) => {
+        formData.append(param, (params.data as any)[param]);
+    });
+
+    await customFetch(`/art/`, {
+        method: "POST",
+        body: formData,
+        signal: params.signal,
+    });
+};
+
+export const updateArt = async (params: IUpdateArtRequestParams) => {
+    await customFetch(`/art/${params.id}/`, {
+        method: "PATCH",
+        body: JSON.stringify(params.data),
+        signal: params.signal,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+    });
+};
+
+export const deleteArt = async (params: IDeleteArtRequestParams) => {
+    await customFetch(`/art/${params.id}/`, {
+        method: "DELETE",
+        signal: params.signal,
+    });
+};
+
 export const getArts = async (params: IGetArtsRequestParams) => {
     const response = await customFetch<IGetArtsResponse>("/art/", {
-        params: { ...params.pageParam, token: undefined },
+        params: params.pageParam,
         signal: params.signal,
         cache: "no-cache",
     });
@@ -74,7 +109,7 @@ export const getSavedArts = async (params: IGetSavedArtsRequestParams) => {
     return {
         count: response.data.count,
         next: response.data.next,
-        items: response.data.results.map((savedArt) => savedArt.art),
+        items: response.data.results,
     };
 };
 
