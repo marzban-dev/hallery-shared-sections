@@ -74,7 +74,7 @@ export const getSavedArts = async (params: IGetSavedArtsRequestParams) => {
     return {
         count: response.data.count,
         next: response.data.next,
-        items: response.data.results,
+        items: response.data.results.map((savedArt) => savedArt.art),
     };
 };
 
