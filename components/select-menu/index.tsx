@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import SelectOption from "./components/select-option";
 import { ISelectMenuProps } from "./select-menu.types";
-import DropDownIcon from "public/assets/icon/caret-down-solid.svg";
 import classNames from "classnames";
+import IconCaretDownSolid from "../icons/caret-down-solid";
 
 const SelectMenu: React.FC<ISelectMenuProps> = ({
     items,
@@ -55,7 +55,7 @@ const SelectMenu: React.FC<ISelectMenuProps> = ({
                     {renderOptions}
                 </select>
                 <div className="absolute right-[12px] flex h-full items-center justify-center">
-                    <DropDownIcon className="h-[20px] fill-[rgb(150,150,150)]" />
+                    <IconCaretDownSolid className="h-[20px] fill-[rgb(150,150,150)]" />
                 </div>
             </div>
         </div>
