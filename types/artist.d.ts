@@ -1,4 +1,4 @@
-export { };
+export {};
 
 declare global {
     interface IArtist {
@@ -8,12 +8,15 @@ declare global {
         profession: string;
         school: string;
         bio: string;
-        image: string;
+        profile_image: string;
         header: IImage;
+        verify: boolean;
         wikipedia: string | null;
         following: boolean;
+        views_count: number;
         followers_count: number;
         views_count: number;
+        created_at: string;
     }
 
     interface ISimpleArtist {
