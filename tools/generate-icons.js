@@ -12,7 +12,7 @@ const fs = require("fs/promises");
 
         await fs.writeFile(
             `./shared/components/icons/${fileName}.tsx`,
-            `"use client";\n\nimport Comp${PascalCase} from "public/assets/icon/${fileName}.svg"\n\nconst Icon${PascalCase} = (props : {className?:string; style?:React.CSSProperties}) => {\n    return <Comp${PascalCase} {...props}/>\n}\n\nexport default Icon${PascalCase}`
+            `"use client";\n\nimport Comp${PascalCase} from "shared/components/icons/svgs/${fileName}.svg"\n\nconst Icon${PascalCase} = (props : {className?:string; style?:React.CSSProperties}) => {\n    return <Comp${PascalCase} {...props}/>\n}\n\nexport default Icon${PascalCase}`
         );
     }
 })();
