@@ -1,4 +1,4 @@
-import { authOptions } from "config/auth";
+import { authOptions } from "shared/config/auth";
 import { getServerSession} from "next-auth/next";
 import { getSession } from "next-auth/react";
 
