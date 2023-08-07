@@ -19,7 +19,7 @@ import {
     ISeenNotificationsRequestParams,
     IUpdateSettingsRequestParams,
 } from "./user.types";
-import customFetch from "config/fetch";
+import customFetch from "shared/config/fetch";
 
 export const getUserProfile = async (params: IGetUserProfileRequestParams) => {
     const response = await customFetch<IGetUserProfileResponse>(`/user/get/${params.id}/`, {
