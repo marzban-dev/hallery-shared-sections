@@ -1,4 +1,4 @@
-import { getUser, refreshAccessToken, signin } from "apis/auth.api";
+import { getUser, refreshAccessToken, signin } from "shared/apis/auth.api";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import customFetch from "./fetch";
