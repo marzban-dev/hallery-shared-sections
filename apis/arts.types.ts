@@ -29,6 +29,12 @@ export interface IGetArtRequestParams extends IApiRequest {
     id: number;
 }
 
+export interface IGetChartDataRequestParams extends IApiRequest {}
+
+export interface IGetChartSavedArtsResponse extends IApiInfiniteResponse<ISavedArt> {}
+
+export interface IGetChartLikesResponse extends IApiInfiniteResponse<IArtLike> {}
+
 export interface ICreateArtRequestParams extends IApiRequest {
     data: ICreateArt;
 }
