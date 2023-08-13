@@ -31,6 +31,10 @@ export interface IGetArtistsRequestParams extends IApiRequest {
 
 export interface IGetArtistsResponse extends IApiInfiniteResponse<IArtist> {}
 
+export interface ICreateArtistRequestParams extends IApiRequest {
+    name: string;
+}
+
 export interface IGetFollowersRequestParams extends IApiRequest {
     pageParam: {
         id: string | number;

@@ -1,5 +1,6 @@
 import axios from "shared/config/axios";
 import {
+    ICreateArtistRequestParams,
     IFollowUserRequestParams,
     IGetArtistRequestParams,
     IGetArtistResponse,
@@ -49,6 +50,18 @@ export const getArtistsProfiles = async (params: IGetArtistsRequestParams) => {
         next: response.data.next,
         items: response.data.results,
     };
+};
+
+export const createArtist = async (params: ICreateArtistRequestParams) => {
+    await customFetch(`/artist/`, {
+        method: "POST",
+        body: JSON.stringify(params),
+        signal: params.signal,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+    });
 };
 
 export const followUser = async (params: IFollowUserRequestParams) => {
