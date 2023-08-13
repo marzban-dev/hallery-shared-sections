@@ -42,8 +42,7 @@ declare global {
     interface ICreateArt {
         image: File;
         title: string;
-        width?: number;
-        height?: number;
+        dimension?: string;
         description?: string;
         type?: string;
         technique?: string;
