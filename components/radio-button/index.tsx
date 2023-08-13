@@ -5,7 +5,7 @@ import { IRadioButtonProps } from "./radio-button.types";
 import IconCheck from "shared/components/icons/check";
 import classNames from "classnames";
 
-const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, onChange }) => {
+const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, ...rest }) => {
     const containerClasses = classNames({
         "flex items-center justify-start gap-2 cursor-pointer py-[6px] px-2 rounded-[100px]": 1,
         "bg-[rgb(50,50,50)]": active,
@@ -26,7 +26,7 @@ const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, 
 
     return (
         <div>
-            <label htmlFor={value} className={containerClasses}>
+            <label htmlFor={value as string} className={containerClasses}>
                 <div className={iconContainerClasses}>
                     <IconCheck className={iconClasses} />
                 </div>
@@ -36,9 +36,8 @@ const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, 
                 className="hidden"
                 type="radio"
                 value={value}
-                id={value}
-                name={name}
-                onChange={(e) => onChange(e.target.value)}
+                id={value as string}
+                {...rest as any}
             />
         </div>
     );

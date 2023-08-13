@@ -1,9 +1,3 @@
-import { Input } from "@mui/base";
-
-export interface IRadioButtonProps {
-    onChange: (value: string) => void;
-    value: string;
-    title: string;
-    name: string;
+export interface IRadioButtonProps extends React.ComponentProps<"input"> {
     active: boolean;
 }
