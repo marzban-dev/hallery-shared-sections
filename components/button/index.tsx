@@ -44,7 +44,7 @@ const Button: React.FC<IButtonProps> = ({
         {
             "group flex justify-center items-center gap-2 transition-colors transition-[filter] [line-height:0] outline-1 outline-transparent": 1,
 
-            "rounded-[12px]": !rounded,
+            "rounded-[8px]": !rounded,
             "rounded-[35px]": rounded,
 
             "px-6 min-h-[45px] text-[20px]": !circle && size === "md",
