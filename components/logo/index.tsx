@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import LogoImage from "public/assets/img/logo.jpg";
+import LogoImage from "public/assets/img/logo.png";
 
 const Logo: React.FC = () => {
     return (
