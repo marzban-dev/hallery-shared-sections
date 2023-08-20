@@ -1,8 +1,9 @@
 import { getServerSession } from "next-auth";
 import Avatar from "shared/components/avatar";
+import { authOptions } from "shared/config/auth";
 
 const UserProfile: unknown = async () => {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
 
     return (
         <div className="relative flex items-center justify-center">
