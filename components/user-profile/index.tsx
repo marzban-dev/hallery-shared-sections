@@ -1,21 +1,22 @@
-import { getServerSession } from "next-auth";
-import Avatar from "shared/components/avatar";
-import { authOptions } from "shared/config/auth";
+"use client";
 
-const UserProfile: unknown = async () => {
-    const session = await getServerSession(authOptions);
+import { useSession } from "next-auth/react";
+import Avatar from "shared/components/avatar";
+
+const UserProfile: React.FC = () => {
+    const { data } = useSession();
 
     return (
         <div className="relative flex items-center justify-center">
-            {session && (
+            {data?.user && (
                 <Avatar
                     className="h-[28px] w-[28px]"
-                    picture={session.user.profile_img}
-                    title={session.user.username}
+                    picture={data.user.profile_img}
+                    title={data.user.username}
                     priority
                 />
             )}
         </div>
     );
 };
-export default UserProfile as React.FC;
+export default UserProfile;
