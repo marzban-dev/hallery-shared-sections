@@ -45,7 +45,13 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        jwt: async ({ token, user }) => {
+        jwt: async ({ token, user, trigger }) => {
+            
+            if (trigger === "update") {
+                const latestInfo = await getUser(token.info.username);
+                token.info = latestInfo;
+            }
+
             // Attach authorized user info to next-auth token
             if (user) {
                 const tomorrow = new Date();
