@@ -6,6 +6,7 @@ declare module "next-auth" {
         user: IUser;
         accessToken: string;
         refreshToken: string;
+        tokenExpiry: number;
         expires: DefaultSession["expires"];
     }
 
