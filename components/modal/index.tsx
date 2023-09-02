@@ -127,7 +127,7 @@ const Modal: React.FC<IModalProps> = ({ title, show, onClose, children }) => {
                                     <div className="absolute left-0 top-0 z-[1200] h-[20px] w-full bg-gradient-to-b from-[rgb(20,20,20)] to-transparent" />
                                     <motion.div
                                         animate={{ height: fullSize ? "100vh" : contentHeight }}
-                                        className="scrollbar-custom relative z-[1180] overflow-y-scroll px-6 pb-5 pt-2 min-[520px]:py-5"
+                                        className="scrollbar-custom relative z-[1180] overflow-y-scroll px-4 min-[520px]:px-6 pb-5 pt-2 min-[520px]:py-5"
                                         id="modal-scroll-container"
                                     >
                                         <div className="mb-6 flex items-center justify-center border-b-2 border-[rgb(40,40,40)] pb-2">
