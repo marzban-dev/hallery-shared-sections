@@ -46,7 +46,6 @@ export const authOptions: NextAuthOptions = {
     ],
     callbacks: {
         jwt: async ({ token, user, trigger }) => {
-            
             if (trigger === "update") {
                 const latestInfo = await getUser(token.info.username);
                 token.info = latestInfo;
@@ -64,7 +63,7 @@ export const authOptions: NextAuthOptions = {
             }
 
             // Return previous token if the access token has not expired yet
-            if (token.tokenExpiry && Date.now() < token.tokenExpiry) return token;
+            if (token.accessToken && token.tokenExpiry && Date.now() < token.tokenExpiry) return token;
             // Access token has expired, try to update it
             else if (token.refreshToken) return await refreshAccessToken(token);
         },
