@@ -1,27 +1,26 @@
-import { authOptions } from "shared/config/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { checkTokenValidity } from "shared/apis/auth.api";
+import { authOptions } from "shared/config/auth";
 
 const checkAuth = async () => {
     const session = await getServerSession(authOptions);
-    const isTokenValid = await checkTokenValidity();
+    // const isTokenValid = await checkTokenValidity();
 
-    return { session, isTokenValid };
+    return { session };
 };
 
 export const checkServerAuth = async () => {
-    const { isTokenValid, session } = await checkAuth();
+    const { session } = await checkAuth();
 
-    if (!session || !isTokenValid) {
+    if (!session) {
         redirect("/auth/signin");
     }
 };
 
 export const checkDashboardServerAuth = async () => {
-    const { isTokenValid, session } = await checkAuth();
+    const { session } = await checkAuth();
 
-    if (!session || !isTokenValid) {
+    if (!session) {
         redirect("/auth/signin");
     }
 
