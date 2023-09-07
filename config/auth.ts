@@ -66,6 +66,11 @@ export const authOptions: NextAuthOptions = {
             if (token.accessToken && token.tokenExpiry && Date.now() < token.tokenExpiry) return token;
             // Access token has expired, try to update it
             else if (token.refreshToken) return await refreshAccessToken(token);
+            
+            return {
+                ...token,
+                error: "TokenValidationError",
+            };
         },
         session: async ({ token, session }) => {
             if (token.error || (token.tokenExpiry && Date.now() > token.tokenExpiry)) {
