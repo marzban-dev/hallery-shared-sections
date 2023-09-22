@@ -35,8 +35,8 @@ const Item: React.FC<IItemProps> = ({ icon: Icon, children, href, text, iconSize
                     <div className="flex items-center justify-start min-[1000px]:w-[40px]">
                         <svg width="0" height="0">
                             <radialGradient id="icon-gradient" r="150%" cx="30%" cy="107%">
-                                <stop stop-color="rgb(147,197,253)" offset="0" />
-                                <stop stop-color="rgb(37,99,235)" offset="0.9" />
+                                <stop stopColor="rgb(147,197,253)" offset="0" />
+                                <stop stopColor="rgb(37,99,235)" offset="0.9" />
                             </radialGradient>
                         </svg>
                         {children ?? <Icon style={{ height: iconSize }} className={iconClasses} />}
