@@ -53,7 +53,7 @@ export const getArtistsProfiles = async (params: IGetArtistsRequestParams) => {
 };
 
 export const createArtist = async (params: ICreateArtistRequestParams) => {
-    await customFetch(`/artist/`, {
+    return await customFetch(`/artist/`, {
         method: "POST",
         body: JSON.stringify(params),
         signal: params.signal,

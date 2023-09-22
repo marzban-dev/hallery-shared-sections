@@ -60,11 +60,15 @@ export const deleteArt = async (params: IDeleteArtRequestParams) => {
 };
 
 export const getArts = async (params: IGetArtsRequestParams) => {
-    const response = await customFetch<IGetArtsResponse>("/art/", {
-        params: params.pageParam,
-        signal: params.signal,
-        cache: "no-cache",
-    });
+    const response = await customFetch<IGetArtsResponse>(
+        "/art/",
+        {
+            params: params.pageParam,
+            signal: params.signal,
+            cache: "no-cache",
+        },
+        params.cookies
+    );
 
     return {
         items: response.results,
