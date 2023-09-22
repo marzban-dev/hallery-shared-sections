@@ -1,19 +1,15 @@
-import { authOptions } from "shared/config/auth";
-import { getServerSession} from "next-auth/next";
-import { getSession } from "next-auth/react";
+import UniversalCookies from "universal-cookie";
+import getAuth from "./get-auth";
 
-const createAuthHeader = async () => {
-    let session = null;
+const createAuthHeader = async (cookies?: any) => {
+    const universalCookies = new UniversalCookies(cookies);
 
-    if (typeof window === "undefined") {
-        session = await getServerSession(authOptions);
-    } else {
-        session = await getSession();
-    }
+    const session = getAuth(universalCookies);
+    const token = session.token;
 
-    if (session) {
+    if (token) {
         return {
-            Authorization: `Bearer ${session.accessToken}`,
+            Authorization: `Bearer ${token}`,
         };
     }
 
