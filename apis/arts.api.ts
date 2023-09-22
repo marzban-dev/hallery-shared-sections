@@ -19,9 +19,13 @@ import {
 } from "./arts.types";
 
 export const getArt = async (params: IGetArtRequestParams) => {
-    const response = await customFetch<IGetArtResponse>(`/art/${params.id}/`, {
-        signal: params.signal,
-    });
+    const response = await customFetch<IGetArtResponse>(
+        `/art/${params.id}/`,
+        {
+            signal: params.signal,
+        },
+        params.cookies
+    );
 
     return response;
 };
