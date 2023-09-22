@@ -7,29 +7,45 @@ import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { IModalProps } from "./modal.types";
 
-const Modal: React.FC<IModalProps> = ({ title, show, onClose, children }) => {
+const Modal: React.FC<IModalProps> = ({ title, show, onClose, children, className }) => {
     const [fullSize, setFullSize] = useState(false);
     const isMobile = useMediaQuery({ maxWidth: 520 });
     const [contentHeight, setContentHeight] = useState(500);
     const childContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const height = childContainerRef.current?.clientHeight;
-        if (height) {
-            if (height + 120 > 550) setContentHeight(550);
-            else setContentHeight(height + 120);
-        }
+        const setHeight = () => {
+            const height = childContainerRef.current?.clientHeight;
+            if (height) {
+                if (height > 700) {
+                    if (isMobile) setFullSize(true);
+                    else setContentHeight(700);
+                } else {
+                    setContentHeight(500);
+                }
+            }
+        };
+
+        setHeight();
+
+        window.addEventListener("resize", setHeight);
+        return () => {
+            window.removeEventListener("resize", setHeight);
+        };
     }, [children]);
 
     useEffect(() => {
         if (!isMobile) setFullSize(false);
     }, [isMobile]);
 
-    const containerClasses = classNames({
-        "no-flicker absolute z-[1200] min-h-[300px] w-full origin-bottom transform-gpu max-[520px]:bottom-0 min-[520px]:max-w-[700px] transition-[max-height,border-radius]": 1,
-        "p-0": isMobile,
-        "p-4": !isMobile,
-    });
+    const containerClasses = classNames(
+        {
+            "no-flicker absolute z-[1200] min-h-[300px] w-full origin-bottom transform-gpu max-[520px]:bottom-0 min-[520px]:max-w-[700px] transition-[max-height,border-radius]": 1,
+            "p-0": isMobile,
+            "p-4": !isMobile,
+        },
+        className
+    );
 
     const wrapperClasses = classNames({
         "rounded-b-none min-[520px]:rounded-[20px] bg-[rgb(20,20,20)]": 1,
@@ -124,16 +140,18 @@ const Modal: React.FC<IModalProps> = ({ title, show, onClose, children }) => {
                                     <div className="mr-[6px] h-[6px] w-[70px] rounded-[5px] bg-[rgb(40,40,40)]" />
                                 </div>
                                 <div className="relative">
-                                    <div className="absolute left-0 top-0 z-[1200] h-[20px] w-full bg-gradient-to-b from-[rgb(20,20,20)] to-transparent" />
+                                    {/* <div className="absolute left-0 top-0 z-[1200] h-[20px] w-full bg-gradient-to-b from-[rgb(20,20,20)] to-transparent" /> */}
                                     <motion.div
                                         animate={{ height: fullSize ? "100vh" : contentHeight }}
-                                        className="scrollbar-custom relative z-[1180] overflow-y-scroll px-4 min-[520px]:px-6 pb-5 pt-2 min-[520px]:py-5"
+                                        className="scrollbar-custom relative z-[1180] overflow-y-scroll px-4 pb-16 pt-2 min-[520px]:px-6 min-[520px]:py-6"
                                         id="modal-scroll-container"
                                     >
-                                        <div className="mb-6 flex items-center justify-center border-b-2 border-[rgb(40,40,40)] pb-2">
-                                            <span className="text-[25px] font-medium text-white">{title}</span>
-                                        </div>
                                         <div className="w-full" ref={childContainerRef}>
+                                            {title && (
+                                                <div className="mb-6 flex items-center justify-center border-b-2 border-[rgb(40,40,40)] pb-3">
+                                                    <span className="text-[20px] text-white">{title}</span>
+                                                </div>
+                                            )}
                                             {children}
                                         </div>
                                     </motion.div>
