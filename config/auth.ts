@@ -86,7 +86,7 @@ export const authOptions: NextAuthOptions = {
             return Promise.resolve(session);
         },
     },
-    pages: {
-        signIn: "/auth/signin",
-    },
+    // pages: {
+    //     signIn: "/auth/signin",
+    // },
 };
