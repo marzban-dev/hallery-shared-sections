@@ -4,6 +4,7 @@ declare global {
     interface IApiRequest {
         signal?: AbortSignal;
         token?: string;
+        cookies?: any;
     }
 
     interface IApiInfiniteResponse<T> {
