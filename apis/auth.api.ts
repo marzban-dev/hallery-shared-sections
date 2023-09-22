@@ -1,14 +1,13 @@
 import axios from "shared/config/axios";
+import customFetch from "shared/config/fetch";
 import {
+    IConfirmResetPasswordRequestParams,
+    IResetPasswordRequestParams,
     ISigninRequestParams,
     ISigninResponse,
     ISignupRequestParams,
-    ISignupResponse,
-    IGetUserResponse,
-    IResetPasswordRequestParams,
-    IConfirmResetPasswordRequestParams,
+    ISignupResponse
 } from "./auth.types";
-import customFetch from "shared/config/fetch";
 
 export const signin = async (params: ISigninRequestParams) => {
     const response = await customFetch<ISigninResponse>("/auth/jwt/create/", {
