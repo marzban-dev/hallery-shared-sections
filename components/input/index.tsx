@@ -1,7 +1,7 @@
 "use client";
 
 import classNames from "classnames";
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import { IInputProps } from "./input.types";
 import MuiInput from "@mui/base/Input";
 import IconCircleExclamation from "shared/components/icons/circle-exclamation";
@@ -22,13 +22,15 @@ const Input = forwardRef<any, IInputProps>(function Input(
     },
     ref
 ) {
+    const [isFocused, setIsFocused] = useState(false);
+
     const containerClasses = classNames(
         {
-            "flex justify-center items-center rounded-[10px] border-2 transition-colors text-white px-3 flex justify-between align-center gap-3 relative": 1,
-            "border-red-600 hover:border-red-400 focus-within:border-red-400": error,
-            "border-[rgb(40,40,40)] hover:border-[rgb(65,65,65)] focus-within:border-[rgb(65,65,65)]": !error,
+            "flex justify-center items-center rounded-[10px] border transition-colors text-white px-3 flex justify-between align-center gap-3 relative": 1,
+            "border-red-600": error,
+            "border-[rgb(40,40,40)] focus-within:border-blue-400": !error,
+            "hover:border-[rgb(100,100,100)]": !error && !isFocused,
             "bg-[rgb(30,30,30)]": variant === "fill",
-            "123": variant === "stroke",
             "w-full": fullWidth,
             "w-[350px]": !fullWidth,
             "h-[40px]": inputSize === "sm",
@@ -63,16 +65,21 @@ const Input = forwardRef<any, IInputProps>(function Input(
                     )
                 }
                 startAdornment={
-                    textBefore && (
-                        <span className="select-none whitespace-nowrap text-[rgb(140,140,140)]">{textBefore}</span>
-                    )
+                    <>
+                        {error && <IconCircleExclamation className="mt-[2px] h-[18px] fill-red-600" />}
+                        {textBefore && (
+                            <span className="select-none whitespace-nowrap text-[rgb(140,140,140)]">{textBefore}</span>
+                        )}
+                    </>
                 }
                 {...rest}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
                 ref={ref}
             />
             {error && errorMessage && (
-                <div className="mt-2 flex items-center justify-start gap-2 px-3 text-[16px] font-medium text-white sm:px-4">
-                    <IconCircleExclamation className="h-[16px] fill-red-600 mt-[2px]"/><span>{errorMessage}</span>
+                <div className="mt-2 flex items-center justify-start gap-2 px-3 text-[16px] font-medium text-red-400 sm:px-4">
+                    <span>{errorMessage}</span>
                 </div>
             )}
         </div>
