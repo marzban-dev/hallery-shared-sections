@@ -1,15 +1,15 @@
 "use client";
 
-import { useSession } from "next-auth/react";
-import Item from "../item";
-import UserProfile from "shared/components/user-profile";
 import IconUser from "shared/components/icons/user";
+import UserProfile from "shared/components/user-profile";
+import useAuth from "shared/hooks/use-auth";
+import Item from "../item";
 
 const Profile: React.FC = () => {
-    const { data } = useSession();
+    const { user } = useAuth();
 
-    return data?.user ? (
-        <Item href={`/users/${data.user.username}`} text="Profile">
+    return user ? (
+        <Item href={`/users/${user.username}`} text="Profile">
             <UserProfile />
         </Item>
     ) : (

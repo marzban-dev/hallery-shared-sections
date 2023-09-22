@@ -1,21 +1,14 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import Avatar from "shared/components/avatar";
+import useAuth from "shared/hooks/use-auth";
 
 const UserProfile: React.FC = () => {
-    const { data } = useSession();
+    const { user } = useAuth();
 
     return (
         <div className="relative flex items-center justify-center">
-            {data?.user && (
-                <Avatar
-                    className="h-[28px] w-[28px]"
-                    picture={data.user.profile_img}
-                    title={data.user.username}
-                    priority
-                />
-            )}
+            {user && <Avatar className="h-[28px] w-[28px]" picture={user.profile_img} title={user.username} priority />}
         </div>
     );
 };
