@@ -3,7 +3,8 @@ import removeUndefined from "shared/utils/remove-undefined";
 
 const customFetch = async <T>(
     input: string,
-    init?: ({ params?: Record<any, any> } & RequestInit) | undefined
+    init?: ({ params?: Record<any, any> } & RequestInit) | undefined,
+    cookies?: any
 ): Promise<T> => {
     const baseURL = "https://api.hallery.art";
 
@@ -12,7 +13,7 @@ const customFetch = async <T>(
     let headers: any = { ...init?.headers };
 
     if (!input.includes("auth/signin") && !input.includes("auth/signup")) {
-        const authHeader = (await createAuthHeader()) as object;
+        const authHeader = (await createAuthHeader(cookies)) as object;
         headers = { ...headers, ...authHeader };
     }
 
