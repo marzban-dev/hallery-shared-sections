@@ -19,9 +19,9 @@ const Modal: React.FC<IModalProps> = ({ title, show, onClose, children, classNam
             if (height) {
                 if (height > 700) {
                     if (isMobile) setFullSize(true);
-                    else setContentHeight(700);
+                    else setContentHeight(650);
                 } else {
-                    setContentHeight(500);
+                    setContentHeight(height + 50);
                 }
             }
         };
