@@ -48,7 +48,7 @@ const Modal: React.FC<IModalProps> = ({ title, show, onClose, children, classNam
     );
 
     const wrapperClasses = classNames({
-        "rounded-b-none min-[520px]:rounded-[20px] bg-[rgb(20,20,20)]": 1,
+        "rounded-b-none min-[520px]:rounded-[10px] bg-[rgb(20,20,20)]": 1,
         "rounded-t-[20px]": !fullSize,
         "overflow-visible": isMobile,
         "overflow-hidden": !isMobile,
