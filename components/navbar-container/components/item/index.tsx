@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IItemProps } from "./item.types";
 
-const Item: React.FC<IItemProps> = ({ icon: Icon, children, href, text, iconSize = 26 }) => {
+const Item: React.FC<IItemProps> = ({ icon: Icon, activeIcon: ActiveIcon, children, href, text, iconSize = 24 }) => {
     const pathname = usePathname();
 
     const isRouteMatch = pathname === href;
@@ -39,7 +39,12 @@ const Item: React.FC<IItemProps> = ({ icon: Icon, children, href, text, iconSize
                                 <stop stopColor="rgb(37,99,235)" offset="0.9" />
                             </radialGradient>
                         </svg>
-                        {children ?? <Icon style={{ height: iconSize }} className={iconClasses} />}
+                        {children ??
+                            (isRouteMatch ? (
+                                <ActiveIcon style={{ height: iconSize }} className={iconClasses} />
+                            ) : (
+                                <Icon style={{ height: iconSize }} className={iconClasses} />
+                            ))}
                     </div>
                     <span className={textClasses}>{text}</span>
                 </div>
