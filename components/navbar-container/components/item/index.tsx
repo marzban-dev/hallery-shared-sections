@@ -40,11 +40,9 @@ const Item: React.FC<IItemProps> = ({ icon: Icon, activeIcon: ActiveIcon, childr
                             </radialGradient>
                         </svg>
                         {children ??
-                            (isRouteMatch ? (
-                                <ActiveIcon style={{ height: iconSize }} className={iconClasses} />
-                            ) : (
-                                <Icon style={{ height: iconSize }} className={iconClasses} />
-                            ))}
+                            (isRouteMatch
+                                ? ActiveIcon && <ActiveIcon style={{ height: iconSize }} className={iconClasses} />
+                                : Icon && <Icon style={{ height: iconSize }} className={iconClasses} />)}
                     </div>
                     <span className={textClasses}>{text}</span>
                 </div>

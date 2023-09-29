@@ -9,7 +9,7 @@ const Profile: React.FC = () => {
     const { user } = useAuth();
 
     return user ? (
-        <Item href={`https://hallery.art/users/${user.username}`} text="Profile">
+        <Item href={`https://hallery.art/users/${user.username}`}  text="Profile">
             <UserProfile />
         </Item>
     ) : (
