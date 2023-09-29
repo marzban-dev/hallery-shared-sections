@@ -15,7 +15,6 @@ declare global {
         following: boolean;
         views_count: number;
         followers_count: number;
-        views_count: number;
         created_at: string;
     }
 
