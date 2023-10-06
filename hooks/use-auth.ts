@@ -69,7 +69,15 @@ const useAuth = () => {
         }
     };
 
-    return { user, token, update };
+    const logout = () => {
+        cookies.remove("auth-tokens", { path: "/" });
+        cookies.remove("auth-user", { path: "/" });
+        setUser(null);
+        setToken(null);
+        push("/auth/signin");
+    };
+
+    return { user, token, update, logout };
 };
 
 export default useAuth;
