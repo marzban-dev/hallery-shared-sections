@@ -10,11 +10,11 @@ const customFetch = async <T>(
 
     removeUndefined(init?.headers);
 
-    let headers: any = { ...init?.headers };
+    let headers: any = {...init?.headers};
 
     if (!input.includes("auth/signin") && !input.includes("auth/signup")) {
         const authHeader = (await createAuthHeader(cookies)) as object;
-        headers = { ...headers, ...authHeader };
+        headers = {...headers, ...authHeader};
     }
 
     removeUndefined(init?.params);
@@ -22,11 +22,12 @@ const customFetch = async <T>(
     const url = `${baseURL + input}?${new URLSearchParams(init?.params)}`;
 
     const response = await fetch(url, {
-        ...{ ...init, params: undefined },
+        ...{...init, params: undefined},
         headers,
     });
 
     if (response.status >= 400) {
+        console.log("redirect to auth page.....................");
         const body = await response.json();
         throw new Error(`${response.status} : ${body.code}\nUrl : ${url}`);
     }
