@@ -1,5 +1,5 @@
 export interface IFollowUserRequestParams extends IApiRequest {
-    id: string;
+    id: string | number;
     type: "user" | "artist";
 }
 
