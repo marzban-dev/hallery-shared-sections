@@ -31,18 +31,17 @@ export const getUserProfile = async (params: IGetUserProfileRequestParams) => {
     return response;
 };
 
-export const getArtistProfile = async (params: IGetArtistRequestParams) => {
+export const getArtistProfile = async (params: IGetArtistRequestParams, cookies: any) => {
     const response = await customFetch<IGetArtistResponse>(`/artist/${params.id}/`, {
         signal: params.signal,
-        cache: "force-cache",
-    });
+    }, cookies);
 
     return response;
 };
 
 export const getArtistsProfiles = async (params: IGetArtistsRequestParams) => {
     const response = await axios.get<IGetArtistsResponse>(`/artist/`, {
-        params: { ...params.pageParam, token: undefined },
+        params: {...params.pageParam, token: undefined},
         signal: params.signal,
     });
     return {
@@ -65,7 +64,7 @@ export const createArtist = async (params: ICreateArtistRequestParams) => {
 };
 
 export const followUser = async (params: IFollowUserRequestParams) => {
-    await axios.post(`/user/follow/${params.type}/${params.id}/`, null, { signal: params.signal });
+    return await axios.post(`/user/follow/${params.type}/${params.id}/`, null, {signal: params.signal});
 };
 
 export const getFollowers = async (params: IGetFollowersRequestParams) => {
@@ -74,7 +73,7 @@ export const getFollowers = async (params: IGetFollowersRequestParams) => {
 
     const response = await axios.get<IGetFollowersResponse>(
         `/${params.pageParam.type}/${params.pageParam.id}/follower/`,
-        { params: { limit, offset }, signal: params.signal }
+        {params: {limit, offset}, signal: params.signal}
     );
 
     return {
@@ -90,7 +89,7 @@ export const getFollowing = async (params: IGetFollowingRequestParams) => {
 
     const response = await axios.get<IGetFollowingResponse>(
         `/${params.pageParam.type}/${params.pageParam.id}/following/`,
-        { params: { limit, offset }, signal: params.signal }
+        {params: {limit, offset}, signal: params.signal}
     );
 
     return {
@@ -105,7 +104,7 @@ export const getFollowingArtist = async (params: IGetFollowingArtistRequestParam
     const offset = params.pageParam.page * limit - limit;
 
     const response = await axios.get<IGetFollowingArtistResponse>(`/user/${params.pageParam.id}/following/artists/`, {
-        params: { limit, offset },
+        params: {limit, offset},
         signal: params.signal,
     });
 
@@ -121,7 +120,7 @@ export const getNotifications = async (params: IGetNotificationsRequestParams) =
     const offset = params.pageParam.page * limit - limit;
 
     const response = await axios.get<IGetNotificationsResponse>("/user/notification/", {
-        params: { limit, offset },
+        params: {limit, offset},
         signal: params.signal,
     });
 
@@ -133,13 +132,13 @@ export const getNotifications = async (params: IGetNotificationsRequestParams) =
 };
 
 export const checkNotifications = async () => {
-    const response = await getNotifications({ pageParam: { limit: 1, page: 1 } });
+    const response = await getNotifications({pageParam: {limit: 1, page: 1}});
     if (response.items.length !== 0) return !response.items[0].is_read;
     return false;
 };
 
 export const seenNotifications = async (params: ISeenNotificationsRequestParams) => {
-    await axios.post(`/user/notification/${params.id}/`, null, { signal: params.signal });
+    await axios.post(`/user/notification/${params.id}/`, null, {signal: params.signal});
 };
 
 export const updateSettings = async (params: IUpdateSettingsRequestParams) => {
@@ -155,10 +154,10 @@ export const updateSettings = async (params: IUpdateSettingsRequestParams) => {
 
     await axios.patch("/auth/users/me/", formData, {
         signal: params.signal,
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {"Content-Type": "multipart/form-data"},
     });
 };
 
 export const requestArtist = async (params: IRequestArtistRequestParams) => {
-    await axios.post(`/requestartist/`, { ...params, signal: undefined }, { signal: params.signal });
+    await axios.post(`/requestartist/`, {...params, signal: undefined}, {signal: params.signal});
 };
