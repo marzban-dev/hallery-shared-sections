@@ -8,7 +8,7 @@ import Item from "./components/item";
 const ActionMenu: React.FC<IActionMenuProps> = ({ isOpen, setIsOpen, anchorEl, items }) => {
     const renderItems = useMemo(() => {
         return items.map((item, index) => <Item {...item} setIsOpen={setIsOpen} key={index} />);
-    }, [items]);
+    }, [items])
 
     return (
         <Menu
