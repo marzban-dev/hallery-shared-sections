@@ -4,7 +4,7 @@ import LogoImage from "public/assets/img/logo.png";
 
 const Logo: React.FC = () => {
     return (
-        <Link href="/" className="w-[40px]">
+        <Link href="https://hallery.art" className="w-[40px]">
             <Image src={LogoImage} alt="logo" priority />
         </Link>
     );
