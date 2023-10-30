@@ -13,8 +13,8 @@ const Spinner: React.FC<ISpinnerProps> = ({ size = 30, style, iconClassName }) =
             exit={{ opacity: 0 }}
             style={style}
         >
-            <div className="animate-spin fill-white [animation-duration:0.5s]" data-testid="loading-icon">
-                <SpinnerThird className={iconClassName} style={{ width: size }} />
+            <div data-testid="loading-icon">
+                <SpinnerThird className={iconClassName + " animate-spin fill-white [animation-duration:0.5s]"} style={{ width: size }} />
             </div>
         </motion.div>
     );

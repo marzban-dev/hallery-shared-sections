@@ -5,7 +5,7 @@ import classNames from "classnames";
 const Item: React.FC<IItemProps> = ({ text, onClick, setIsOpen, icon: Icon, hide, variant = "default" }) => {
     const containerClasses = classNames({
         "flex items-center justify-start gap-3 px-3 py-2 rounded-[8px] transition-colors w-full": 1,
-        "hover:bg-[rgb(40,40,40)] fill-[rgb(120,120,120)]": variant === "default",
+        "hover:bg-[rgb(55,55,55)] fill-[rgb(120,120,120)]": variant === "default",
         "hover:bg-red-500 hover:bg-opacity-[0.15] fill-red-500": variant === "danger",
         "hover:bg-blue-500 hover:bg-opacity-[0.15] fill-blue-500": variant === "info",
         hidden: hide,

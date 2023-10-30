@@ -32,10 +32,13 @@ export const getUserProfile = async (params: IGetUserProfileRequestParams) => {
 };
 
 export const getArtistProfile = async (params: IGetArtistRequestParams) => {
-    const response = await customFetch<IGetArtistResponse>(`/artist/${params.id}/`, {
-        signal: params.signal,
-        cache: "force-cache",
-    });
+    const response = await customFetch<IGetArtistResponse>(
+        `/artist/${params.id}/`,
+        {
+            signal: params.signal,
+        },
+        params.cookies
+    );
 
     return response;
 };
@@ -65,7 +68,7 @@ export const createArtist = async (params: ICreateArtistRequestParams) => {
 };
 
 export const followUser = async (params: IFollowUserRequestParams) => {
-    await axios.post(`/user/follow/${params.type}/${params.id}/`, null, { signal: params.signal });
+    return await axios.post(`/user/follow/${params.type}/${params.id}/`, null, { signal: params.signal });
 };
 
 export const getFollowers = async (params: IGetFollowersRequestParams) => {
