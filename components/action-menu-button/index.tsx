@@ -9,7 +9,7 @@ import classNames from "classnames";
 
 const ActionMenuButton: React.FC<IActionMenuButtonProps> = ({ className, iconClassName, options }) => {
     const buttonEl = useRef<HTMLButtonElement>(null);
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const iconClasses = classNames(
         {
