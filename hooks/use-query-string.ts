@@ -1,32 +1,27 @@
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-const useQueryString = <T extends Record<any, any>>(queries: T, deleteWhenUndefined?: boolean) => {
+const useQueryString = <T>() => {
+    const pathname = usePathname();
     const searchParams = useSearchParams();
+    const urlSearchParams = new URLSearchParams(searchParams?.toString());
 
-    const extractQueries = (): T => {
-        const queryObject: any = {};
-
-        /**
-         * iterate over queries argument and extract query strings from url one by one using next router
-         * if query does not exist in url then use default value provided in queries object
-         * if deleteWhenUndefined is true, do not put default value for that query and keep it empty
-         * after all, store them into queryObject
-         */
-        Object.keys(queries).map((query) => {
-            if (searchParams.has(query)) {
-                queryObject[query] = String(searchParams.get(query));
+    const updateQueryParams = (params: Partial<T>) => {
+        Object.entries(params).forEach(([key, value]) => {
+            if (value === undefined || value === null) {
+                urlSearchParams.delete(key);
             } else {
-                if (!deleteWhenUndefined) {
-                    queryObject[query] = queries[query];
-                }
+                urlSearchParams.set(key, String(value));
             }
         });
 
-        return queryObject;
+        const search = urlSearchParams.toString();
+        const query = search ? `?${search}` : "";
+        // replace since we don't want to build a history
+        return `${pathname}${query}`;
     };
 
-    return useMemo(extractQueries, [searchParams]);
+    return { queryParams: searchParams, updateQueryParams };
 };
 
 export default useQueryString;

@@ -6,7 +6,7 @@ import {
     ISigninRequestParams,
     ISigninResponse,
     ISignupRequestParams,
-    ISignupResponse
+    ISignupResponse,
 } from "./auth.types";
 
 export const signin = async (params: ISigninRequestParams) => {
@@ -29,6 +29,7 @@ export const signup = async (params: ISignupRequestParams) => {
         username: params.username,
         email: params.email,
         password: params.password,
+        invited_by : params.invited_by
     });
 
     return response.data;
@@ -43,9 +44,13 @@ export const checkTokenValidity = async () => {
     }
 };
 
-export const getUser = async (username: string) => {
-    const response = await customFetch<IUser>(`/user/get/${username}/`, { cache: "no-cache" });
-    return response;
+export const getUser = async (username: string, token: string) => {
+    return await customFetch<IUser>(`/user/get/${username}/`, {
+        cache: "no-cache",
+        headers: {
+            "Authorization" : `Bearer ${token}`
+        },
+    });
 };
 
 export const refreshAccessToken = async (token: any) => {

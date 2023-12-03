@@ -1,4 +1,4 @@
-export { };
+export {};
 
 declare global {
     interface IUser {
@@ -17,6 +17,11 @@ declare global {
         followings_count: number;
         followers_count: number;
         artist_followings_count: number;
+        invite_slug: string;
+        setting: null;
+        timezone: string;
+        email: string;
+        invited_by: null | number;
     }
 
     interface ISimpleUser {

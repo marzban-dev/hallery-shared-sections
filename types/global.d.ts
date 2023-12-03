@@ -1,6 +1,11 @@
 export {};
 
 declare global {
+    type NextPageParams<T extends Record<string, string | undefined>> = {
+        params: T;
+        searchParams: { [key: string]: string | undefined };
+    };
+
     type TArtistProfileQueryParams = {
         sortBy: "most_liked" | "most_reposted" | "most_viewed";
         orderBy: "asc" | "des";

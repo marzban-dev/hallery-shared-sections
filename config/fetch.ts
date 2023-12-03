@@ -10,6 +10,8 @@ const customFetch = async <T>(
 
     removeUndefined(init?.headers);
 
+    let token: string | undefined = "";
+
     let headers: any = {...init?.headers};
 
     if (!input.includes("auth/signin") && !input.includes("auth/signup")) {
@@ -20,6 +22,11 @@ const customFetch = async <T>(
     removeUndefined(init?.params);
 
     const url = `${baseURL + input}?${new URLSearchParams(init?.params)}`;
+
+    console.log({
+        ...{...init, params: undefined},
+        headers,
+    })
 
     const response = await fetch(url, {
         ...{...init, params: undefined},

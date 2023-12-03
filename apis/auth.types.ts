@@ -12,6 +12,7 @@ export interface ISignupRequestParams {
     username: string;
     email: string;
     password: string;
+    invited_by: string;
 }
 
 export interface ISignupResponse {

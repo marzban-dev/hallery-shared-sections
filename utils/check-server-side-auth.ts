@@ -20,3 +20,4 @@ export const checkDashboardServerAuth = () => {
         redirect("/become-an-artist");
     }
 };
+
