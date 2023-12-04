@@ -7,7 +7,7 @@ import classNames from "classnames";
 
 const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, ...rest }) => {
     const containerClasses = classNames({
-        "flex items-center justify-start gap-2 cursor-pointer py-[6px] px-2 rounded-[100px]": 1,
+        "flex items-center justify-start gap-2 cursor-pointer py-[6px] px-2 rounded-[100px] hover:bg-[rgb(30,30,30)] transition-colors": 1,
         "bg-[rgb(50,50,50)]": active,
         "bg-transparent": !active,
     });
@@ -25,7 +25,7 @@ const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, 
     });
 
     return (
-        <div>
+        <>
             <label htmlFor={value as string} className={containerClasses}>
                 <div className={iconContainerClasses}>
                     <IconCheck className={iconClasses} />
@@ -33,13 +33,14 @@ const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, 
                 <span className="pr-2 text-white">{title}</span>
             </label>
             <Input
-                className="hidden"
+                hidden
+                className="-z-10 absolute hidden"
                 type="radio"
                 value={value}
                 id={value as string}
                 {...rest as any}
             />
-        </div>
+        </>
     );
 };
 
