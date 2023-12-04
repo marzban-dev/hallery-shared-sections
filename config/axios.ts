@@ -1,8 +1,10 @@
 import axiosModule from "axios";
 import createAuthHeader from "shared/utils/create-auth-header";
 
+export const BASE_URL = "https://api.hallery.art";
+
 const axios = axiosModule.create({
-    baseURL: "https://api.hallery.art",
+    baseURL: BASE_URL,
 });
 
 axios.interceptors.request.use(async (config) => {
