@@ -23,11 +23,6 @@ const customFetch = async <T>(
 
     const url = `${baseURL + input}?${new URLSearchParams(init?.params)}`;
 
-    console.log({
-        ...{...init, params: undefined},
-        headers,
-    })
-
     const response = await fetch(url, {
         ...{...init, params: undefined},
         headers,

@@ -1,16 +1,26 @@
 "use client";
 
-import { Input } from "@mui/base";
-import { IRadioButtonProps } from "./radio-button.types";
+import { Button } from "@mui/base";
 import IconCheck from "shared/components/icons/check";
 import classNames from "classnames";
 
-const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, ...rest }) => {
-    const containerClasses = classNames({
-        "flex items-center justify-start gap-2 cursor-pointer py-[6px] px-2 rounded-[100px] hover:bg-[rgb(30,30,30)] transition-colors": 1,
-        "bg-[rgb(50,50,50)]": active,
-        "bg-transparent": !active,
-    });
+type RadioButton = {
+    value: string | number;
+    title: string;
+    active: boolean;
+    className?: string;
+    onClick: (value: string | number) => void;
+};
+
+const RadioButton = ({ value, title, active, className, onClick }: RadioButton) => {
+    const containerClasses = classNames(
+        {
+            "flex items-center justify-start gap-2 cursor-pointer py-[6px] px-2 rounded-[100px] hover:bg-[rgb(30,30,30)] active:scale-[0.85] transition-all": 1,
+            "bg-[rgb(50,50,50)]": active,
+            "bg-transparent": !active,
+        },
+        className
+    );
 
     const iconContainerClasses = classNames({
         "min-w-[22px] min-h-[22px] transition-colors rounded-full border-2 flex justify-center items-center": 1,
@@ -25,22 +35,12 @@ const RadioButton: React.FC<IRadioButtonProps> = ({ value, name, title, active, 
     });
 
     return (
-        <>
-            <label htmlFor={value as string} className={containerClasses}>
-                <div className={iconContainerClasses}>
-                    <IconCheck className={iconClasses} />
-                </div>
-                <span className="pr-2 text-white">{title}</span>
-            </label>
-            <Input
-                hidden
-                className="-z-10 absolute hidden"
-                type="radio"
-                value={value}
-                id={value as string}
-                {...rest as any}
-            />
-        </>
+        <Button className={containerClasses} onClick={() => onClick(value)}>
+            <div className={iconContainerClasses}>
+                <IconCheck className={iconClasses} />
+            </div>
+            <span className="pr-2 text-white">{title}</span>
+        </Button>
     );
 };
 
