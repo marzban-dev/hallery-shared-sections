@@ -1,5 +1,5 @@
-import createAuthHeader from "shared/utils/create-auth-header";
-import removeUndefined from "shared/utils/remove-undefined";
+import createAuthHeader from "@/shared/utils/create-auth-header";
+import removeUndefined from "@/shared/utils/remove-undefined";
 
 const customFetch = async <T>(
     input: string,

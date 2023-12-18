@@ -1,7 +1,5 @@
 import Logo from "shared/components/logo";
 import { INavbarContainerProps } from "./navbar-container.types";
-import Link from "next/link";
-import {Button} from "@mui/base";
 import Logout from "./components/logout";
 
 const NavbarContainer: React.FC<INavbarContainerProps> = ({ children ,logout}) => {

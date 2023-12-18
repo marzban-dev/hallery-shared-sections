@@ -1,5 +1,5 @@
-import axios from "shared/config/axios";
-import customFetch from "shared/config/fetch";
+import axios from "@/shared/config/axios";
+import customFetch from "@/shared/config/fetch";
 import {
     ICreateArtRequestParams,
     IDeleteArtRequestParams,

@@ -42,7 +42,7 @@ const Button: React.FC<IButtonProps> = ({
 
     const containerClasses = classNames(
         {
-            "group flex justify-center items-center gap-2 transition-colors transition-[filter] [line-height:0] outline-1 outline-transparent": 1,
+            "group flex justify-center items-center gap-2 transition-all transition-[filter] [line-height:0] outline-1 outline-transparent outline outline-[3px] outline-transparent active:outline-blue-500/60": 1,
 
             "rounded-[10px]": !rounded,
             "rounded-[35px]": rounded,

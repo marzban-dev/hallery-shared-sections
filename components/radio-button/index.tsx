@@ -23,13 +23,13 @@ const RadioButton = ({ value, title, active, className, onClick }: RadioButton) 
     );
 
     const iconContainerClasses = classNames({
-        "min-w-[22px] min-h-[22px] transition-colors rounded-full border-2 flex justify-center items-center": 1,
+        "w-[18px] lg:w-[22px] aspect-square shrink-0 transition-colors rounded-full border-2 flex justify-center items-center": 1,
         "bg-blue-500 border-blue-500": active,
         "border-[rgb(60,60,60)] bg-transparent": !active,
     });
 
     const iconClasses = classNames({
-        "h-[14px] transition-colors mt-[3px]": 1,
+        "h-[10px] lg:h-[14px] transition-colors mt-px lg:mt-[2px]": 1,
         "fill-white": active,
         "fill-transparent": !active,
     });
@@ -39,7 +39,7 @@ const RadioButton = ({ value, title, active, className, onClick }: RadioButton) 
             <div className={iconContainerClasses}>
                 <IconCheck className={iconClasses} />
             </div>
-            <span className="pr-2 text-white">{title}</span>
+            <span className="pr-2 text-white max-lg:text-[12px]">{title}</span>
         </Button>
     );
 };

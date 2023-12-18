@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getUser } from "shared/apis/auth.api";
+import { getUser } from "@/shared/apis/auth.api";
 import Cookies from "universal-cookie";
 
 // @ts-ignore

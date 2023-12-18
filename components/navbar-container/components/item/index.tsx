@@ -5,13 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IItemProps } from "./item.types";
 
-const Item: React.FC<IItemProps> = ({ icon: Icon, activeIcon: ActiveIcon, children, href, text, iconSize = 24 }) => {
+const Item: React.FC<IItemProps> = ({ icon: Icon, activeIcon: ActiveIcon, children, href, text, iconSize = 22 }) => {
     const pathname = usePathname();
 
     const isRouteMatch = pathname === href;
 
     const containerClasses = classNames({
-        "group flex cursor-pointer bg-transparent items-center justify-center min-[1000px]:justify-start gap-2 max-[1000px]:h-[50px] max-[1000px]:w-[50px] min-[1000px]:py-3 min-[1000px]:pl-4 min-[1000px]:pr-10 min-[1000px]:w-full rounded-full transition-colors": 1,
+        "group flex cursor-pointer bg-transparent items-center justify-center min-[1000px]:justify-start gap-2 max-[1000px]:h-[50px] max-[1000px]:w-[50px] min-[1000px]:py-[10px] min-[1000px]:pl-4 min-[1000px]:pr-10 min-[1000px]:w-full rounded-full transition-colors": 1,
         "min-[800px]:bg-gradient-to-l from-blue-300 to-blue-600": isRouteMatch,
         "hover:bg-[rgb(25,25,25)]": !isRouteMatch,
     });
@@ -23,7 +23,7 @@ const Item: React.FC<IItemProps> = ({ icon: Icon, activeIcon: ActiveIcon, childr
     });
 
     const textClasses = classNames({
-        "text-[18px] max-[1000px]:hidden": 1,
+        "text-[16px] max-[1000px]:hidden": 1,
         "text-white": isRouteMatch,
         "text-[rgb(180,180,180)]": !isRouteMatch,
     });

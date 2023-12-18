@@ -1,4 +1,4 @@
-import axios from "shared/config/axios";
+import axios from "@/shared/config/axios";
 import {
     ICreateArtistRequestParams,
     IFollowUserRequestParams,
@@ -20,7 +20,7 @@ import {
     ISeenNotificationsRequestParams,
     IUpdateSettingsRequestParams,
 } from "./user.types";
-import customFetch from "shared/config/fetch";
+import customFetch from "@/shared/config/fetch";
 
 export const getUserProfile = async (params: IGetUserProfileRequestParams) => {
     const response = await customFetch<IGetUserProfileResponse>(`/user/get/${params.id}/`, {

@@ -1,5 +1,5 @@
 import axiosModule from "axios";
-import createAuthHeader from "shared/utils/create-auth-header";
+import createAuthHeader from "@/shared/utils/create-auth-header";
 
 const axios = axiosModule.create({
     baseURL: "https://api.hallery.art",

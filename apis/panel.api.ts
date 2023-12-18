@@ -1,4 +1,4 @@
-import customFetch from "shared/config/fetch";
+import customFetch from "@/shared/config/fetch";
 import { IGetChartDataRequestParams, IGetChartLikesResponse, IGetChartSavedArtsResponse } from "./arts.types";
 
 export const getChartData = async (params: IGetChartDataRequestParams) => {

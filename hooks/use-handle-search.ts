@@ -14,6 +14,7 @@ const useHandleSearch = ({ initial, onEmpty, onInputChange, onValueChange }: IPr
 
     useEffect(() => {
         if (timer.current) {
+            console.log(actualValue)
             if (actualValue.length !== 0) {
                 onValueChange(actualValue);
             } else {
