@@ -1,7 +1,8 @@
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import { getUser } from "@/shared/apis/auth.api";
 import Cookies from "universal-cookie";
+import { protectedRoutes } from "@/shared/constants/protectedRoutes";
 
 // @ts-ignore
 const cookies = new Cookies();
@@ -12,6 +13,7 @@ export interface ITokens {
 }
 
 const useAuth = () => {
+    const pathname = usePathname();
     const [user, setUser] = useState<null | IUser>(null);
     const [token, setToken] = useState<null | string>(null);
 
@@ -21,11 +23,16 @@ const useAuth = () => {
         checkToken();
     }, []);
 
+    const checkAccess = () => {
+        const isProtected = protectedRoutes.some((route) => pathname.includes(route));
+        if (isProtected) push("/auth/signin");
+    };
+
     const checkToken = () => {
         const tokens = cookies.get("auth-tokens");
         const user = cookies.get("auth-user");
 
-        if (!tokens || !user) return push("/auth/signin");
+        if (!tokens || !user) checkAccess();
 
         try {
             const parsedTokens = tokens as ITokens;
@@ -41,10 +48,10 @@ const useAuth = () => {
                 return;
             }
 
-            return push("/auth/signin");
+            return checkAccess();
         } catch (e) {
             console.log("Auth tokens parse error");
-            return push("/auth/signin");
+            return checkAccess();
         }
     };
 

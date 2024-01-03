@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
                         password: credentials!.password,
                     });
 
-                    const user = await getUser(credentials!.username);
+                    const user = await getUser(authTokens.access);
 
                     const userData = {
                         tokens: authTokens,
@@ -47,7 +47,7 @@ export const authOptions: NextAuthOptions = {
     callbacks: {
         jwt: async ({ token, user, trigger }) => {
             if (trigger === "update") {
-                const latestInfo = await getUser(token.info.username);
+                const latestInfo = await getUser(token.accessToken);
                 token.info = latestInfo;
             }
 

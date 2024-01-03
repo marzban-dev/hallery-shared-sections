@@ -35,17 +35,8 @@ export const signup = async (params: ISignupRequestParams) => {
     return response.data;
 };
 
-export const checkTokenValidity = async () => {
-    try {
-        await customFetch("/auth/users/me/", { cache: "no-cache" });
-        return true;
-    } catch (e) {
-        return false;
-    }
-};
-
-export const getUser = async (username: string, token: string) => {
-    return await customFetch<IUser>(`/user/get/${username}/`, {
+export const getUser = async (token: string) => {
+    return await customFetch<IUser>(`/auth/jwt/me/`, {
         cache: "no-cache",
         headers: {
             "Authorization" : `Bearer ${token}`

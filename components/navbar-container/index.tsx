@@ -4,10 +4,10 @@ import Logout from "./components/logout";
 
 const NavbarContainer: React.FC<INavbarContainerProps> = ({ children ,logout}) => {
     return (
-        <nav className="bottom-0 z-50 flex w-full items-start justify-center max-[800px]:fixed min-[430px]:bottom-[20px] min-[800px]:h-screen min-[800px]:w-[100px] min-[1000px]:w-[250px]">
-            <ul className="min-[800px]:flex flex-col justify-between h-full min-[800px]:pb-4 max-[430px]:w-full">
-                <div className="flex gap-2 max-[800px]:bg-[rgba(20,20,20,0.8)] max-[800px]:px-4 max-[800px]:backdrop-blur-xl max-[430px]:w-full max-[430px]:justify-center max-[430px]:border-t max-[430px]:border-[rgb(50,50,50)] min-[420px]:gap-5 min-[430px]:rounded-full min-[800px]:flex-col min-[800px]:pt-[40px]">
-                    <div className="mb-[20px] flex w-full items-center justify-center max-[800px]:hidden">
+        <nav className="bottom-0 z-50 flex w-full items-start justify-center max-md:fixed 2xs:bottom-[20px] md:h-screen md:w-[100px] lg:w-[250px]">
+            <ul className="md:flex flex-col justify-between h-full md:pb-4 max-2xs:w-full">
+                <div className="flex gap-2 max-md:bg-[rgba(25,25,25,0.7)] max-md:px-4 max-md:backdrop-blur-lg max-2xs:w-full max-2xs:justify-center max-2xs:border-t max-2xs:border-[rgb(50,50,50)] 2xs:gap-5 2xs:rounded-full md:flex-col md:pt-[40px]">
+                    <div className="mb-[20px] flex w-full items-center justify-center max-md:hidden">
                         <Logo />
                     </div>
                     {children}
