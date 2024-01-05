@@ -19,7 +19,7 @@ declare global {
 
     interface IArt {
         id: number;
-        artist: ISimpleArtist;
+        artist: IArtist;
         title: string;
         description: string;
         image: IImage;
@@ -37,7 +37,36 @@ declare global {
         user_repost: boolean;
         approval: IApproval;
         approval_id: number;
+        friends_like : [];
+        views_count : number;
     }
+
+    //     artist: {
+    //         id: 5566,
+    //         owner: {
+        //         id: 2,
+    //             username: 'mansour',
+    //             first_name: 'Mansour18',
+    //             profile_img: 'https://api.hallery.art/media/2/profile/nN9eyZ59QN7ijiZ0NwvE6iK16BbleB2xUw0sil7p.jpg',
+    //             invited_by: null,
+    //             following: false,
+    //             verify: false,
+    //             artist: 5566,
+    //             chat: 1
+        //     },
+    //         name: 'Mansour',
+    //         profile_image: 'https://api.hallery.art/media/2/artist/profile/ETGBlMVHoEJjgMYbWB6ueorid3q9hTp55Q7x7X7d.png',
+    //         following: false,
+    //         verify: false,
+    //         header: null
+        // },
+    // views_count: 4
+
+
+
+
+
+
 
     interface ICreateArt {
         image: File;

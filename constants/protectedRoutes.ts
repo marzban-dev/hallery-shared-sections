@@ -1,1 +1,1 @@
-export const protectedRoutes = ["auth/signin"];
+export const protectedRoutes = ["dashboard", "manage"];

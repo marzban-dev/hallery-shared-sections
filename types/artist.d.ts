@@ -4,6 +4,7 @@ declare global {
     interface IArtist {
         id: number;
         name: string;
+        owner: IUser;
         birth_data: string;
         profession: string;
         school: string;
@@ -16,13 +17,6 @@ declare global {
         views_count: number;
         followers_count: number;
         created_at: string;
-    }
-
-    interface ISimpleArtist {
-        id: number;
-        name: string;
-        image: string;
-        profession: string;
-        following: boolean;
+        likes_count: number;
     }
 }

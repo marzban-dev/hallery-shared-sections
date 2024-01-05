@@ -36,7 +36,7 @@ export const signup = async (params: ISignupRequestParams) => {
 };
 
 export const getUser = async (token: string) => {
-    return await customFetch<IUser>(`/auth/jwt/me/`, {
+    return await customFetch<IUser>(`/auth/users/me/`, {
         cache: "no-cache",
         headers: {
             "Authorization" : `Bearer ${token}`

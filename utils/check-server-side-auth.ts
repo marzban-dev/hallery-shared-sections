@@ -1,5 +1,8 @@
 import { redirect } from "next/navigation";
 import getServerAuth from "./get-server-auth";
+import { useEffect } from "react";
+import { protectedRoutes } from "@/shared/constants/protectedRoutes";
+import getPathname from "@/shared/utils/get-pathname";
 
 export const checkServerAuth = () => {
     const { token } = getServerAuth();
@@ -11,8 +14,15 @@ export const checkServerAuth = () => {
 
 export const checkDashboardServerAuth = () => {
     const { token, user } = getServerAuth();
+    const pathname = getPathname();
 
-    if (!token || !user) {
+    const checkAccess = () => {
+        return protectedRoutes.some((route) => pathname.includes(route));
+    };
+
+    const isProtected = checkAccess();
+
+    if (isProtected && (!token || !user)) {
         redirect("/auth/signin");
     }
 
