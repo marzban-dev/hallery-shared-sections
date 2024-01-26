@@ -65,7 +65,7 @@ export interface IGetFollowingArtistRequestParams extends IApiRequest {
     };
 }
 
-export interface IGetFollowingArtistResponse extends IApiInfiniteResponse<ISimpleArtist> {}
+export interface IGetFollowingArtistResponse extends IApiInfiniteResponse<IArtist> {}
 
 export interface IGetNotificationsRequestParams extends IApiRequest {
     pageParam: {
